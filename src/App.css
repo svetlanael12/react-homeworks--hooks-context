@@ -13,28 +13,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-.list {
-  max-width: 300px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  list-style-type: none;
-
-}
-.list__item {
-  margin: 3px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid black;
-
-  cursor: pointer;
-}
-.list__item:hover {
-  background-color: rgba(5, 116, 116, 0.334);
-}
-.list__item.active {
-  background-color: rgb(5, 116, 116);
-  color: #fff;
-}

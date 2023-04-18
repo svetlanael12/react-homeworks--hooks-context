@@ -1,25 +1,22 @@
-import { useState } from 'react';
-import Details from './components/Details';
-import List from './components/List';
-import Context from './context/Context';
-import useRequest from './hooks/useRequest';
+import useJsonFetch from './hooks/useJsonFetch';
 
 import './App.css';
+import Loading from './components/Loading';
+import Data from './components/Data';
+import Error from './components/Error';
 
 function App() {
-  const [list, setList] = useState([]);
-  const [id, setId] = useState();
-  const [details, setDetails] = useState();
-
-  useRequest(`users.json`, setList, []);
-  useRequest(`${id}.json`, setDetails, [id]);
+  const { data, error, loading } = useJsonFetch('http://localhost:7070/loading', 'GET');
 
   return (
     <div className="App">
-      <Context.Provider value={{list: list, id: id, setId: setId, details: details}}>
-        <List />
-        <Details />
-      </Context.Provider>
+      {
+        loading ?
+        <Loading /> :
+        <Data />
+      }
+      <Data />
+      <Error />
     </div>
   );
 }
